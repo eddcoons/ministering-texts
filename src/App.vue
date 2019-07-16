@@ -7,37 +7,49 @@
         <div class="option-wrapper">
             <h4 class="option-heading">Two Ministering Sisters with Two Sisters Assigned to Them</h4>
             <ul class="options">
-                <li class="option" @click="optionSelected = !optionSelected">Have Survey Info for Both</li>
-                <li class="option">Have Survey Info for One Sister</li>
+                <li class="option" @click="toggleOptionSelected('optionTwoInfoSelected')">Have Survey Info for Both</li>
+                <li class="option" @click="toggleOptionSelected('optionOneInfoSelected')">Have Survey Info for One Sister</li>
                 <li class="option">Have Survey Info for Neither</li>
             </ul>
         </div>
 
     </div>
 
-    <TwoWithInfo v-bind:class="{'hidden' : !optionSelected}" v-on:start-again="startAgain()"/>
+    <TwoWithInfo v-bind:class="{'hidden' : !optionTwoInfoSelected}" v-on:start-again="startAgain()"/>
+    <TwoWithOneInfo v-bind:class="{'hidden' : !optionOneInfoSelected}" v-on:start-again="startAgain()"></TwoWithOneInfo>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import TwoWithInfo from './components/TwoWithInfo'
+import TwoWithOneInfo from './components/TwoWithOneInfo'
 
 export default {
   name: 'app',
   components: {
     HelloWorld,
-    TwoWithInfo
+    TwoWithInfo,
+    TwoWithOneInfo
   },
   data() {
     return {
-        optionSelected: false
+        optionSelected : false,
+        optionTwoInfoSelected: false,
+        optionOneInfoSelected: false
     }
 
   },
   methods : {
-    startAgain() {
+   toggleOptionSelected(sectionToShow) {
         this.optionSelected = !this.optionSelected;
+        this[sectionToShow] = !this[sectionToShow];
+   },
+
+    startAgain() {
+        this.optionSelected = false;
+        this.optionTwoInfoSelected = false;
+        this.optionOneInfoSelected = false;
     }
   }
 }
