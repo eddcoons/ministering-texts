@@ -50,36 +50,69 @@
             </div>
             <div class="two-info-questions-4 question-section" v-bind:class="{'hidden' : twoInfoQuestionsFourHidden}">
                 <div class="question-wrapper">
-                    <label>Second Sister Assigned First Name</label>
-                    <input v-model="msTwoFirstName"/>
-                    <label>Second Sister Assigned First Name</label>
-                    <input v-model="msTwoLastName"/>
+                    <label for="msTwoFirstName" class="question-label">Second Sister Assigned First Name</label>
+                    <input v-model="msTwoFirstName" id="msTwoFirstName" class="question-input"/>
+                </div>
+                <div class="question-wrapper">
+                    <label for="msTwoLastName" class="question-label">Second Sister Assigned Last Name</label>
+                    <input v-model="msTwoLastName" id="msTwoLastName" class="question-input"/>
                 </div>
 
-                <button @click="showNextQuestion('twoInfoQuestionsFourHidden', 'twoInfoQuestionsFiveHidden')">Next</button>
+                <button @click="showNextQuestion('twoInfoQuestionsFourHidden', 'twoInfoQuestionsFiveHidden')" class="next-question">&#8594;</button>
             </div>
-            <div class="two-info-questions-5" v-bind:class="{'hidden' : twoInfoQuestionsFiveHidden}">
-                <label>How {{msTwoFirstName}} likes to be ministered to:</label><input v-model="msTwoMinisteringType">
-                <label>{{msTwoFirstName}}'s Availability</label><input v-model="msTwoAvailability">
-                <label>{{msTwoFirstName}}'s Favorite Treat</label><input v-model="msTwoTreat">
-                <label>{{msTwoFirstName}}'s Phone #</label><input v-model="msTwoNumber">
-                <button @click="finishQuestions('twoInfoQuestionsFiveHidden')">Finish!</button>
+            <div class="two-info-questions-5 question-section" v-bind:class="{'hidden' : twoInfoQuestionsFiveHidden}">
+                <div class="question-wrapper">
+                    <label for="msTwoMinisteringType" class="question-label">How {{msTwoFirstName}} likes to be ministered to:</label>
+                    <input v-model="msTwoMinisteringType" id="msTwoMinisteringType" class="question-input">
+                </div>
+                <div class="question-wrapper">
+                    <label for="msTwoAvailability" class="question-label">{{msTwoFirstName}}'s Availability</label>
+                    <input v-model="msTwoAvailability" id="msTwoAvailability" class="question-input">
+                </div>
+                <div class="question-wrapper">
+                    <label for="msTwoTreat" class="question-label">{{msTwoFirstName}}'s Favorite Treat</label>
+                    <input v-model="msTwoTreat" id="msTwoTreat" class="question-input">
+                </div>
+                <div class="question-wrapper">
+                    <label for="msTwoNumber" class="question-label">{{msTwoFirstName}}'s Phone #</label>
+                    <input v-model="msTwoNumber" id="msTwoNumber" class="question-input">
+                </div>
+
+                <button @click="finishQuestions('twoInfoQuestionsFiveHidden')" class="next-question">&#8594;</button>
             </div>
 
         </div>
 
         <div v-bind:class="{'hidden' : completedTextHidden}">
             <h1 class="section-heading">Copy & Paste</h1>
-            <p>Hello {{companionOne}} & {{companionTwo}}!</p>
-            <p>This is {{presMember}} from the ward. :) We as a Relief Society appreciate your willingness to minister to a few sisters in our ward. Their names are {{msOneFirstName}} {{msOneLastName}} & {{msTwoFirstName}} {{msTwoLastName}}. We encourage you to get to know each other as you will be companions, and to get to know these sisters so you can reach out in love to fulfill their needs. Let me know if there is anything I can do to assist you as I am here to offer you support. This is a new assignment so you\'ll probably need to sync your LDS tools app to see it updated there.</p>
-            <p>In the surveys we handed out, Sister {{msOneLastName}} said that she enjoys {{msOneMinisteringType}}. She's available {{msOneAvailability}}. Her favorite treats are {{msOneTreat}}.</p>
-            <p>Sister {{msTwoLastName}} enjoys {{msTwoMinisteringType}}. She's available {{msTwoAvailability}}. Her favorite treat is {{msTwoTreat}}.</p>
-            <p>We love you Sisters and know that you will be of great help to {{msOneFirstName}} & {{msTwoFirstName}}!</p>
-            <p>
+            <p class="text-to-review">Hello {{companionOne}} & {{companionTwo}}!</p>
+            <p class="text-to-review">This is {{presMember}} from the ward. :) We as a Relief Society appreciate your willingness to minister to a few sisters in our ward. Their names are {{msOneFirstName}} {{msOneLastName}} & {{msTwoFirstName}} {{msTwoLastName}}. We encourage you to get to know each other as you will be companions, and to get to know these sisters so you can reach out in love to fulfill their needs. Let me know if there is anything I can do to assist you as I am here to offer you support. This is a new assignment so you'll probably need to sync your LDS tools app to see it updated there.</p>
+            <p class="text-to-review">In the surveys we handed out, Sister {{msOneLastName}} said that she enjoys {{msOneMinisteringType}}. She's available {{msOneAvailability}}. Her favorite treats are {{msOneTreat}}.</p>
+            <p class="text-to-review">Sister {{msTwoLastName}} enjoys {{msTwoMinisteringType}}. She's available {{msTwoAvailability}}. Her favorite treat is {{msTwoTreat}}.</p>
+            <p class="text-to-review">We love you Sisters and know that you will be of great help to {{msOneFirstName}} & {{msTwoFirstName}}!</p>
+            <p class="text-to-review">
                 {{msOneFirstName}}'s number: {{msOneNumber}}
                 {{msTwoFirstName}}'s number: {{msTwoNumber}}
             </p>
-            <button @click="copyText()">Copy Text</button>
+            <div>
+<textarea id="text" class="text-to-copy">
+Hello {{companionOne}} & {{companionTwo}}!
+
+This is {{presMember}} from the ward. :) We as a Relief Society appreciate your willingness to minister to a few sisters in our ward. Their names are {{msOneFirstName}} {{msOneLastName}} & {{msTwoFirstName}} {{msTwoLastName}}. We encourage you to get to know each other as you will be companions, and to get to know these sisters so you can reach out in love to fulfill their needs. Let me know if there is anything I can do to assist you as I am here to offer you support. This is a new assignment so you'll probably need to sync your LDS tools app to see it updated there.
+
+In the surveys we handed out, Sister {{msOneLastName}} said that she enjoys {{msOneMinisteringType}}. She's available {{msOneAvailability}}. Her favorite treats are {{msOneTreat}}.
+
+Sister {{msTwoLastName}} enjoys {{msTwoMinisteringType}}. She's available {{msTwoAvailability}}. Her favorite treat is {{msTwoTreat}}.
+
+We love you Sisters and know that you will be of great help to {{msOneFirstName}} & {{msTwoFirstName}}!
+
+{{msOneFirstName}}'s number: {{msOneNumber}}
+
+{{msTwoFirstName}}'s number: {{msTwoNumber}}
+</textarea>
+            </div>
+            <button @click="copyText()" class="copy-button">Copy Text</button>
+            <button v-on:click="reset(); $emit('start-again')" class="start-again-button">Start Again</button>
         </div>
 
 
@@ -122,7 +155,6 @@
         methods : {
             copyText() {
                 let textToCopy = document.getElementById('text');
-                console.log(textToCopy);
                 textToCopy.select();
                 document.execCommand("copy");
                 alert('text copied');
@@ -136,6 +168,31 @@
             finishQuestions(currentQuestionSection) {
                 this[currentQuestionSection] = !this[currentQuestionSection];
                 this.completedTextHidden = false;
+            },
+
+            reset() {
+                this.companionOne = '';
+                this.companionTwo = '';
+                this.presMember = '';
+                this.msOneFirstName = '';
+                this.msOneLastName = '';
+                this.msOneMinisteringType = '';
+                this.msOneAvailability = '';
+                this.msOneTreat = '';
+                this.msOneNumber = '';
+                this.msTwoFirstName = '';
+                this.msTwoLastName = '';
+                this.msTwoMinisteringType = '';
+                this.msTwoAvailability = '';
+                this.msTwoTreat = '';
+                this.msTwoNumber = '';
+                this.text = '';
+                this.twoInfoQuestionsOneHidden = false;
+                this.twoInfoQuestionsTwoHidden = true;
+                this.twoInfoQuestionsThreeHidden = true;
+                this.twoInfoQuestionsFourHidden = true;
+                this.twoInfoQuestionsFiveHidden = true;
+                this.completedTextHidden = true;
             }
         }
     }
@@ -186,9 +243,58 @@
     .next-question {
         font-size: 2rem;
         text-align: right;
+        background: #fff;
+        border: none;
+        transition: all .3s ease-in-out;
+    }
+
+    .next-question:hover {
+        cursor: pointer;
+        transform: translateX(10px);
+        transition: all .3s ease-in-out;
     }
 
     .hidden {
         display: none;
+    }
+
+    .text-to-review {
+        font-size: .8rem;
+    }
+
+    .text-to-copy {
+        opacity: 0;
+        transform: translateX(1000px);
+    }
+
+    .copy-button {
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 600;
+        font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+        text-transform: uppercase;
+        background: #343085;
+        width: 95%;
+        padding: 1rem;
+        border: none;
+        transition: all .3s ease-in-out;
+    }
+
+    .copy-button:hover, .start-again-button:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+        transition: all .3s ease-in-out;
+    }
+
+    .start-again-button {
+        font-size: 1.2rem;
+        font-weight: 600;
+        font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+        text-transform: uppercase;
+        width: 95%;
+        padding: 1rem;
+        border: 2px solid #000;
+        background: #fff;
+        margin-top: 2rem;
     }
 </style>

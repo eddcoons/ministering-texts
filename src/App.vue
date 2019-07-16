@@ -15,8 +15,7 @@
 
     </div>
 
-    <TwoWithInfo v-bind:class="{'hidden' : !optionSelected}"/>
-    <button v-bind:class="{'hidden' : !optionSelected}" @click="optionSelected = !optionSelected">Done</button>
+    <TwoWithInfo v-bind:class="{'hidden' : !optionSelected}" v-on:start-again="startAgain()"/>
   </div>
 </template>
 
@@ -35,11 +34,21 @@ export default {
         optionSelected: false
     }
 
+  },
+  methods : {
+    startAgain() {
+        this.optionSelected = !this.optionSelected;
+    }
   }
 }
 </script>
 
 <style>
+body {
+    display: flex;
+    justify-content: center;
+}
+
 #app {
   font-family: 'Montserrat', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -47,6 +56,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   padding: 0 1rem;
+  width: 40%;
 }
 
 .section-heading {
@@ -77,9 +87,16 @@ export default {
 .option:hover, .option:focus {
     background: #84b8b9;
     color: #fff;
+    cursor: pointer;
 }
 
 .hidden {
     display: none;
+}
+
+@media (max-width: 900px) {
+    #app {
+        width: 100%;
+    }
 }
 </style>
